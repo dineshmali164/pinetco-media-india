@@ -22,8 +22,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::post('checkemail', 'user\UserController@CheckmailIsRegistered');
 Route::middleware(['auth'])->group(function () {
-    Route::post('checkemail', 'user\UserController@CheckmailIsRegistered');
     Route::resource('post','PostController');
     Route::post('post/{slug}', 'PostController@GetPost');
     Route::get('all-post', 'PostController@listAllPOsts');
